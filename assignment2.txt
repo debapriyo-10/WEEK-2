@@ -1,0 +1,225 @@
+#Question 1
+def spiral_print(matrix):
+    top, bottom = 0, len(matrix) - 1
+    left, right = 0, len(matrix[0]) - 1
+
+    while top <= bottom and left <= right:
+        
+        for i in range(left, right + 1):
+            print(matrix[top][i], end=" ")
+        top += 1
+
+        for i in range(top, bottom + 1):
+            print(matrix[i][right], end=" ")
+        right -= 1
+        if top <= bottom:
+            for i in range(right, left - 1, -1):
+                print(matrix[bottom][i], end=" ")
+            bottom -= 1
+
+        if left <= right:
+            for i in range(bottom, top - 1, -1):
+                print(matrix[i][left], end=" ")
+            left += 1
+
+matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+]
+
+spiral_print(matrix)
+
+
+#Question 2
+def rotate_90_clockwise(matrix):
+    for i in range(len(matrix)):
+        for j in range(i, len(matrix[0])):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    
+    for row in matrix:
+        row.reverse()
+    
+    return matrix
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+rotate_90_clockwise(matrix)
+for row in matrix:
+    print(row)
+
+#Question3
+def rotate_90_clockwise(matrix):
+    for i in range(len(matrix)):
+        for j in range(i, len(matrix[0])):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+    
+    for row in matrix:
+        row.reverse()
+    
+    return matrix
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+rotate_90_clockwise(matrix)
+for row in matrix:
+    print(row)
+
+#Question 4
+def transpose(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    result = [[0] * rows for _ in range(cols)]  # Create empty transposed matrix
+    
+    for i in range(rows):
+        for j in range(cols):
+            result[j][i] = matrix[i][j]
+    
+    return result
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+transposed = transpose(matrix)
+for row in transposed:
+    print(row)
+
+#Question 5
+def is_sparse(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    total_elements = rows * cols
+    zero_count = 0
+
+    for row in matrix:
+        for val in row:
+            if val == 0:
+                zero_count += 1
+
+    return zero_count > total_elements / 2
+
+matrix1 = [
+    [0, 0, 3],
+    [0, 0, 0],
+    [4, 0, 0]
+]
+print(is_sparse(matrix1))  
+
+matrix2 = [
+    [1, 2],
+    [3, 4]
+]
+print(is_sparse(matrix2)) 
+
+#Question 6
+def add_polynomials(poly1, poly2):
+    max_len = max(len(poly1), len(poly2))
+    
+    poly1 += [0] * (max_len - len(poly1))
+    poly2 += [0] * (max_len - len(poly2))
+    
+    result = [poly1[i] + poly2[i] for i in range(max_len)]
+    
+    return result
+
+poly1 = [5, 0, 10, 6]   # 5 + 0x + 10x² + 6x³
+poly2 = [1, 2, 4]       # 1 + 2x + 4x²
+
+result = add_polynomials(poly1, poly2)
+print(result)  # [6, 2, 14, 6] => 6 + 2x + 14x² + 6x³
+
+
+#Question 7
+arr = []
+
+arr.append(10)         
+arr.insert(0, 5)        
+print("After insertions:", arr)
+
+arr.pop()               
+arr.pop(0)              
+print("After deletions:", arr)
+
+arr = [1, 2, 3, 4, 5]
+if 3 in arr:
+    print("3 found at index", arr.index(3))
+for val in arr:
+    print(val, end=" ")
+
+arr[2] = 99
+print("\nAfter update:", arr)
+
+
+#Question8
+arr = []
+
+arr.append(10)          
+arr.insert(0, 5)        
+print("After insertions:", arr)
+
+arr.pop()              
+arr.pop(0)              
+print("After deletions:", arr)
+
+arr = [1, 2, 3, 4, 5]
+if 3 in arr:
+    print("3 found at index", arr.index(3))
+
+for val in arr:
+    print(val, end=" ")
+
+arr[2] = 99
+print("\nAfter update:", arr)
+
+
+#Question 9
+arr = []
+
+arr.append(10)          
+arr.insert(0, 5)        
+print("After insertions:", arr)
+
+arr.pop()              
+arr.pop(0)              
+print("After deletions:", arr)
+
+arr = [1, 2, 3, 4, 5]
+if 3 in arr:
+    print("3 found at index", arr.index(3))
+
+for val in arr:
+    print(val, end=" ")
+
+arr[2] = 99
+print("\nAfter update:", arr)
+
+
+#Question 10
+#include <stdio.h>
+
+int main() {
+    int r, c, i, j, count = 0;
+    printf("Enter rows and columns: ");
+    scanf("%d %d", &r, &c);
+
+    int mat[r][c];
+    printf("Enter matrix elements:\n");
+    for (i = 0; i < r; i++) {
+        for (j = 0; j < c; j++) {
+            scanf("%d", &mat[i][j]);
+            if (mat[i][j] == 0) count++;
+        }
+    }
+
+    printf("Number of zeros: %d\n", count);
+    return 0;
+}
